@@ -1,10 +1,17 @@
 {
     "Version": 5,
     "ElasticsearchWarning": true,
-    "ResolverConfig": {
-        "project": {
-            "ConflictHandler": "AUTOMERGE",
-            "ConflictDetection": "VERSION"
-        }
+    "StackMapping": {
+        "TodoTable": "Todo 3",
+        "TodoIAMRole": "Todo 3",
+        "TodoDataSource": "Todo 3",
+        "GetTodoResolver": "Todo 3",
+        "ListTodoResolver": "Todo 3",
+        "CreateTodoResolver": "Todo 3",
+        "UpdateTodoResolver": "Todo 3",
+        "DeleteTodoResolver": "Todo 3",
+        "GetAttTodoTableStreamArn": "Todo 3",
+        "GetAttTodoDataSourceName": "Todo 3",
+        "GetAttTodoTableName": "Todo 3"
     }
 }
