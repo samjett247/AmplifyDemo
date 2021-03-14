@@ -22,15 +22,20 @@ function App() {
 
   async function createNote() {
     if (!formData.name || !formData.description) return;
+    console.log(formData);
+
     await API.graphql({ query: createNoteMutation, variables: { input: formData } });
     setNotes([ ...notes, formData ]);
     setFormData(initialFormState);
   }
 
-  async function deleteNote({ id }) {
-    const newNotesArray = notes.filter(note => note.id !== id);
-    setNotes(newNotesArray);
-    await API.graphql({ query: deleteNoteMutation, variables: { input: { id } }});
+  async function deleteNote(noteIdToDelete) {
+    console.log(noteIdToDelete);
+    console.log(notes);
+    // const newNotesArray = notes.filter(note => note.id !== noteToDelete.id);
+    // setNotes(newNotesArray);
+    await API.graphql({ query: deleteNoteMutation, variables: { input: {id: noteIdToDelete }}});
+    fetchNotes();
   }
 
   return (
@@ -53,7 +58,8 @@ function App() {
             <div key={note.id || note.name}>
               <h2>{note.name}</h2>
               <p>{note.description}</p>
-              <button onClick={() => deleteNote(note)}>Delete note</button>
+              <p>{note.id}</p>
+              <button onClick={() => deleteNote(note.id)}>Delete note</button>
             </div>
           ))
         }
